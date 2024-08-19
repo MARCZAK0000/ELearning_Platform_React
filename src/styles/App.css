@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+    background-image: url(../assets/mainPage.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 1;
+}
+
+@font-face {
+    font-family: "EduFont";
+    src: url(../Fonts/FastHand/Fasthand-Regular.ttf);
+    
+}
+@font-face {
+    font-family: "Dosis";
+    src: url(../Fonts/Dosis/Dosis-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: "MateRegular";
+    src: url(../Fonts/Mate/Mate-Regular.ttf);
+}
+@font-face {
+    font-family: "Indie_Flower";
+    src: url(../Fonts/Indie_Flower/IndieFlower-Regular.ttf);
+}
+.font-title {
+    font-family: "EduFont";
+}
+.font-small { 
+    font-family: "MateRegular";
+}
+.font-export {
+    font-family: "Dosis";
+}
+.font-indie_flower{
+    font-family: "Indie_Flower";
+}
+.border-e-1{
+    border-inline-end-width: 1px;
+}
