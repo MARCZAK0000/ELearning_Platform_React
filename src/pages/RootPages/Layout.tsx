@@ -1,6 +1,6 @@
+import { Outlet } from "react-router-dom"
 import Footer from "../../components/Footer"
 import Header from "../../components/Header"
-import MainPage from "../MainPage"
 
 const Layout = ()=>{
     return(
@@ -8,7 +8,7 @@ const Layout = ()=>{
         <div className='h-svh'>
         <div className='grid grid-rows-12 h-full'>
             <Header/>
-            <MainPage/>
+            <Outlet/>
             <Footer/>
         </div>
        
