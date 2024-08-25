@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #root {
-    background-image: url(../assets/mainPage.png);
+    background-image: url(../assets/mainPage.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -27,8 +27,14 @@
     font-family: "Indie_Flower";
     src: url(../Fonts/Indie_Flower/IndieFlower-Regular.ttf);
 }
+
+@font-face{
+    font-family: "NewAmsterdam";
+    src: url("../Fonts/New_Amsterdam/NewAmsterdam-Regular.ttf")
+}
+
 .font-title {
-    font-family: "EduFont";
+    font-family: "NewAmsterdam";
 }
 .font-small { 
     font-family: "MateRegular";

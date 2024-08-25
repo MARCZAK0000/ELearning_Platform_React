@@ -13,7 +13,7 @@ const Footer = ()=>{
                     </div>
                 </div>
                 <div className="col-span-1 box-border p-5">
-                    <div className="text-end pe-10">
+                    <div className="text-end pe-10 text-white">
                         <a href="#" className="font-small pe-4 hover:text-fuchsia-200 duration-1000">Privacy</a>
                         <a href="#" className="font-small pe-4 hover:text-fuchsia-200 duration-1000">FAQ</a>
                         <a href="#" className="font-small hover:text-fuchsia-200 duration-1000">Contact</a>

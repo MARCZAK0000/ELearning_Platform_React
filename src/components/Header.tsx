@@ -2,7 +2,7 @@ const Header = ()=>{
     return(
     <>
         <div className="row-span-1">
-            <div className="h-full grid grid-cols-2">
+            <div className="h-full grid grid-cols-2 text-white">
                 <div className="col-span-1 box-border p-5">
                     <a href="/" className="font-medium text-3xl pl-10 font-title">
                         E-Learning platform
