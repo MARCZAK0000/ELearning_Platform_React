@@ -1,11 +1,14 @@
 export type CustomButtonType = {
     text: string
+    onClick: (e:React.MouseEvent<HTMLButtonElement>)=> void
 }
 
-export const CustomButton = ({text}: CustomButtonType)=>{
+export const CustomButton = ({text, onClick}: CustomButtonType)=>{
     return(
     <>
-        <button className="
+        <button
+        onClick={onClick}
+        className="
         w-1/3
         bg-green-500
         text-white 

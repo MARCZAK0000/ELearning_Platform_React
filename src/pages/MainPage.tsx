@@ -3,7 +3,7 @@ const MainPage = ()=>{
     <>
         <div className="row-span-10">
             <div className="h-full flex justify-center items-center">
-                <div className="grid grid-rows-3 gap-5 box-border p-40 border-2 rounded-xl text-teal-400 hover:bg-slate-200 duration-500 hover:text-black" >
+                <div className="grid grid-rows-3 gap-5 box-border p-40 border-2 rounded-xl text-red-700 hover:bg-slate-200 duration-500 hover:text-black" >
                     <div className="row-span-1">
                         <div className="font-title text-6xl">Welcome to E-Learning Platform</div>
                     </div>
