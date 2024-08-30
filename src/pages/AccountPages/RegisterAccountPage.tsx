@@ -1,17 +1,15 @@
 import { useCallback, useState } from "react";
-import { CustomButton } from "../../components/AccountComponents/CustomButton";
-import CustomInput from "../../components/AccountComponents/CustomInput"
-import { RegisterInput } from '../../utilis/registerInput';
 import ContrastButton from '../../components/AccountComponents/ContrastButton';
 import { RegisterInputType } from "../../utilis/InputTypes";
 import { useAxios } from "../../hooks/useAxios";
-import { useNavigate } from "react-router-dom";
+import RegisterAccountMain from "./RegisterAccountPageComponents/RegisterAccountPageMain";
+import RegisterAccountSuccess from "./RegisterAccountPageComponents/RegisterAccountSuccess";
+import { toast, ToastContainer } from "react-toastify";
 
 const RegisterAccountPage = ()=>{
 
     const [contrast, setContrast] = useState<boolean>(false)
     const {post, state} = useAxios<boolean>()
-    const navigate = useNavigate()
 
     const [registerInput, setRegisterInput]=useState<RegisterInputType>({
         addressEmail: "",
@@ -48,50 +46,39 @@ const RegisterAccountPage = ()=>{
                 "Content-Type":"Application/Json",
             }
         })
-        if(response.status===201){
-            navigate("/")
+        if(response.data){
+
+            console.log("Done");
+            toast.success("Well done")
         }
     },[registerInput])
 
     return (<>
-        {state.error && <div className="text-9xl text-white">KURWA</div>}
+        
         <div className="row-span-10 overflow-auto no-scrollbar relative">
+            <ToastContainer
+                position="top-left"
+                autoClose={1000}
+                theme={contrast?"dark":"light"}/>
             <ContrastButton contrast= {contrast} handleContrast={handleContrast}/>
-            <div className={contrast?"box-border py-10 mx-5 bg-slate-600 text-white border rounded-lg"
-                :"box-border py-10 mx-5 bg-white text-black border rounded-lg"}>
-                <div className="text-center">
-                    <div className="font-indie_flower text-3xl">Register Account</div>             
-                </div>
-                <div className="p-5">
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-                        {
-                            RegisterInput.map((item)=>{
-                                return(
-                                <>
-                                    <div className={item.id==0?"col-span-2":"col-span-1"}>
-                                        <CustomInput
-                                            key={item.id} 
-                                            name={item.name}
-                                            type={item.type}
-                                            placeholder={item.placeholder??undefined}
-                                            contrast={contrast}
-                                            onChange={handleChange}>
-                                                {item.children}
-                                            
-                                        </CustomInput>
-                                    </div>
-                                </>)
-                            })
-                        }
-                            <div className="col-span-2 mt-4">
-                                <div className="flex justify-center">
-                                    <CustomButton text="Submit"
-                                    onClick={handleClick}/>
-                                </div>
-                            </div>
+                {(!state.success && state.error===null) && 
+                    <div className={contrast?"box-border py-10 mx-5 bg-slate-600 text-white border rounded-lg"
+                        :"box-border py-10 mx-5 bg-white text-black border rounded-lg"}>
+                        <RegisterAccountMain 
+                            handleChange={handleChange}
+                            handleClick={handleClick}
+                            contrast={contrast}
+                        />  
                     </div>
-                </div>
-            </div>
+                }
+                {(state.success)&&
+                    <div className="h-full flex justify-center items-center">
+                        
+                        <RegisterAccountSuccess 
+                        email={registerInput.addressEmail}
+                        contrast={contrast}/>
+                    </div>
+                }
         </div>
     </>)
 }
