@@ -11,3 +11,8 @@ export type RegisterInputType = {
   streetName: string;
   postalCode: string;
 };
+
+export type SignInTypes = {
+  addressEmail: string;
+  password: string;
+};

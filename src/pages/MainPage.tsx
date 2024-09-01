@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const MainPage = ()=>{
     return(
     <>
@@ -13,7 +15,7 @@ const MainPage = ()=>{
                     <div className="row-span-1 grid grid-cols-2 gap">
                         <div className="col-span-1 border-e-1">
                             <div className="flex justify-center">
-                                <a href="/register" className="bg-green-500
+                                <Link to="/register" className="bg-green-500
                                 text-white 
                                 py-2 
                                 px-4 
@@ -23,12 +25,12 @@ const MainPage = ()=>{
                                 hover:cursor-pointer
                                 duration-200">
                                     <div className="font-export text-2xl text-center ">Register</div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-span-1">
                             <div className="flex justify-center">
-                                <a href="#" className="bg-amber-400
+                                <Link to="/signin" className="bg-amber-400
                                 text-white 
                                 py-2 
                                 px-4 
@@ -40,7 +42,7 @@ const MainPage = ()=>{
                                     <div className="font-export text-2xl text-center">
                                         Sign In
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

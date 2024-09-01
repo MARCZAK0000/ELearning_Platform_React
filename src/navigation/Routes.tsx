@@ -12,7 +12,7 @@ export const PublicRoutes : RouteObject [] = [
         },{
             element: <RegisterAccountPage/>, path: "/register"
         },{
-            element: <SignInAccountPage/>, path: "signin"
+            element: <SignInAccountPage/>, path: "/signin"
         }
     ]},
     {
