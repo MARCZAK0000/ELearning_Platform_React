@@ -1,14 +1,21 @@
 import { useState } from "react"
 import ContrastButton from "../../components/AccountComponents/ContrastButton"
-import { SignInTypes } from "../../utilis/InputTypes"
+import { SignInTypes, TokenResponseType } from "../../utilis/InputTypes"
 import SignInInputsMain from "./SignInPageComponents/SignInInputs"
-
+import { useAxios } from '../../hooks/useAxios';
+import { SignInLink as login }  from "../../utilis/Links";
+import { useNavigate } from "react-router-dom";
 const SignInAccountPage = ()=>{
+    const {state, post} =  useAxios<TokenResponseType>()
     const [contrast, setContrast] = useState<boolean>(false)
     const [signInInputs, setSignInInputs] = useState<SignInTypes>({
         addressEmail: "",
         password: ""
     })
+    const navigate = useNavigate()
+
+
+
     const handleContrast = ()=>{
         setContrast(prev=>!prev)
     }
@@ -16,8 +23,15 @@ const SignInAccountPage = ()=>{
         setSignInInputs({...signInInputs, [e.target.name]: e.target.value})
     }
 
-    const handleClick = ()=>{
-        console.log(signInInputs)
+    const SignIn = async () => {
+        await post(login, {body: JSON.stringify(signInInputs)}, {headers: {"Content-Type": "application/json"}})
+        if(state.success){
+            navigate("/")
+        }
+    }
+
+    const handleClick = async ()=>{
+        await SignIn();
     }
 
     return(<>

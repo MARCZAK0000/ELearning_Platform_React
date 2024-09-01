@@ -16,3 +16,11 @@ export type SignInTypes = {
   addressEmail: string;
   password: string;
 };
+
+export type TokenResponseType = {
+  addressEmail: string;
+  token: string;
+  refreshToken: string;
+  signInDate: Date;
+  tokenExpiredDate: Date;
+};

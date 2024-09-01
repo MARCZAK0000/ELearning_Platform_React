@@ -5,7 +5,7 @@ import { useAxios } from "../../hooks/useAxios";
 import RegisterAccountMain from "./RegisterAccountPageComponents/RegisterAccountPageMain";
 import RegisterAccountSuccess from "./RegisterAccountPageComponents/RegisterAccountSuccess";
 import { toast, ToastContainer } from "react-toastify";
-
+import { RegisterLink as Register } from "../../utilis/Links";
 const RegisterAccountPage = ()=>{
 
     const [contrast, setContrast] = useState<boolean>(false)
@@ -34,12 +34,10 @@ const RegisterAccountPage = ()=>{
     }
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         setRegisterInput({...registerInput, [e.target.name]: e.target.value})
-        console.log(registerInput);
-        
     }
 
     const sendRequestAsync = useCallback(async()=>{
-        const response = await post("https://localhost:7213/api/account/register", 
+        const response = await post(Register, 
             {body: JSON.stringify(registerInput)}, 
             {
             headers: {
@@ -56,10 +54,6 @@ const RegisterAccountPage = ()=>{
     return (<>
         
         <div className="row-span-10 overflow-auto no-scrollbar relative">
-            <ToastContainer
-                position="top-left"
-                autoClose={1000}
-                theme={contrast?"dark":"light"}/>
             <ContrastButton contrast= {contrast} handleContrast={handleContrast}/>
                 {(!state.success && state.error===null) && 
                     <div className={contrast?"box-border py-10 mx-5 bg-slate-600 text-white border rounded-lg"
