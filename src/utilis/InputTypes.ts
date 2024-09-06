@@ -13,7 +13,7 @@ export type RegisterInputType = {
 };
 
 export type SignInTypes = {
-  addressEmail: string;
+  emailAddress: string;
   password: string;
 };
 

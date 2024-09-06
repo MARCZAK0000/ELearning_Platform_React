@@ -1,7 +1,7 @@
 export const SignInInputs = [
   {
     id: 0,
-    name: "addressEmail",
+    name: "emailAddress",
     type: "text",
     placeholder: "Enter email Address",
     children: "Email",
