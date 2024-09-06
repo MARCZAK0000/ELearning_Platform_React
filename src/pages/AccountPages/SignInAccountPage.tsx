@@ -6,6 +6,8 @@ import { useAxios } from '../../hooks/useAxios';
 import { SignInLink as login }  from "../../utilis/Links";
 import { useNavigate } from "react-router-dom";
 import ErrorComponent from "../../components/ErrorComponent";
+import { useContextOutlet } from "../RootPages/Layout";
+
 const SignInAccountPage = ()=>{
     const {state, post} =  useAxios<TokenResponseType>()
     const [contrast, setContrast] = useState<boolean>(false)
@@ -14,6 +16,9 @@ const SignInAccountPage = ()=>{
         emailAddress: "",
         password: ""
     })
+    const {handleCookie, cookies} = useContextOutlet()
+
+    
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -28,8 +33,9 @@ const SignInAccountPage = ()=>{
     }
 
     const SignIn = async () => {
-        await post(login, {body: JSON.stringify(signInInputs)}, {headers: {"Content-Type": "application/json"}})
-        if(state.success){
+        const result = await post(login, {body: JSON.stringify(signInInputs)}, {headers: {"Content-Type": "application/json"}})
+        if(result.status===200 || result.status === 201){
+            handleCookie(result.data)
             navigate("/")
         }
     }
@@ -41,7 +47,7 @@ const SignInAccountPage = ()=>{
     return(<>
         <div className="row-span-10 overflow-auto no-scrollbar relative">
             <ContrastButton contrast= {contrast} handleContrast={handleContrast}/>
-            {state.error!=null && <ErrorComponent errorCode={}/>}
+            {state.error!=null && <ErrorComponent errorCode={errorCode}/>}
             <div className="h-full flex items-center justify-center">
                 <div className={contrast?" w-1/2 box-border py-10 mx-5 bg-slate-600 text-white border rounded-lg"
                             :"w-1/2 box-border py-10 mx-5 bg-white text-black border rounded-lg"}>
@@ -57,3 +63,4 @@ const SignInAccountPage = ()=>{
 }
 
 export default SignInAccountPage
+
