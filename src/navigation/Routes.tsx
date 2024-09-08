@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import Layout from "../pages/RootPages/Layout";
 import RegisterAccountPage from "../pages/AccountPages/RegisterAccountPage";
-import MainPage from "../pages/MainPage";
+import MainPage from "../pages/MainPages/MainPage";
 import SignInAccountPage from "../pages/AccountPages/SignInAccountPage";
 
 export const PublicRoutes : RouteObject [] = [

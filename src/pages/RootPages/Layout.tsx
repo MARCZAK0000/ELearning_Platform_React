@@ -4,6 +4,7 @@ import Header from "../../components/Header"
 import { CookiesProvider, useCookies } from "react-cookie"
 import { TokenType } from '../../utilis/TokenTypes';
 import { useEffect } from "react";
+
 type test = {
     cookies: {
         user?: TokenType
@@ -23,13 +24,12 @@ const Layout = ()=>{
         <div className='h-svh'>
         <div className='grid grid-rows-12 h-full'>
             <Header/>
-            <CookiesProvider> 
-                <Outlet context={{cookies, handleCookie} satisfies test}/>
-            </CookiesProvider>
+                <CookiesProvider> 
+                    <Outlet context={{cookies, handleCookie} satisfies test}/>
+                </CookiesProvider>
             <Footer/>
         </div>
-       
-      </div>
+        </div>
     </>
     )
 }

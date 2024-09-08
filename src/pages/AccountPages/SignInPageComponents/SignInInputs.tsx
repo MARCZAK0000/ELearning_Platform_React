@@ -15,7 +15,7 @@ const SignInInputsMain = ({handleChange, contrast, handleClick}: SignInInputType
             <div className="font-indie_flower text-3xl">Register Account</div>             
         </div>
         <div className="p-5">
-            <div >
+            <div>
                 {
                     SignInInputs.map((item)=>{
                         return(
