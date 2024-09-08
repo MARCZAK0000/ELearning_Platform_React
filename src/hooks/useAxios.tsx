@@ -44,9 +44,6 @@ const reducer = (state: State, action: Action,) => {
 
 
 export function useAxios<T>(): AxiosRequest<T>{
-    // const [error, setError] = useState<boolean>(false)
-    // const [errorCode, setErrorCode] = useState<number|undefined>(0)
-    // const [success, setSuccess] = useState<boolean>(false)
     const [state, dispatch] = useReducer(reducer, InitState)
 
     

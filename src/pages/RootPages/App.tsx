@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import '../../styles/App.css'
 import { PublicRoutes } from '../../navigation/Routes'
-import { NotificationsContextProvider } from '../../hooks/useNotificationContext'
+import { NotificationsContextProvider } from '../../context/useNotificationContext'
 function App() {
   
   const createRoute = createBrowserRouter(PublicRoutes)
