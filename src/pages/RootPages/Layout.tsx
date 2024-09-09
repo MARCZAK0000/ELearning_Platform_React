@@ -5,6 +5,7 @@ import { CookiesProvider, useCookies } from "react-cookie"
 import { TokenType } from '../../utilis/TokenTypes';
 import { useEffect } from "react";
 import { ShowChatContextProvider } from "../../context/useShowChatContext";
+import { NotificationHubConnectionContextProvider } from "../../context/useHubNotificationContext";
 
 type test = {
     cookies: {
@@ -24,10 +25,12 @@ const Layout = ()=>{
     <>
         <div className='h-svh'>
         <div className='grid grid-rows-12 h-full'>
-            <CookiesProvider> 
+            <CookiesProvider>
                 <ShowChatContextProvider>
-                    <Header user={cookies.user}/>
-                    <Outlet context={{cookies, handleCookie} satisfies test}/>
+                    <NotificationHubConnectionContextProvider>
+                        <Header user={cookies.user}/>
+                        <Outlet context={{cookies, handleCookie} satisfies test}/>
+                    </NotificationHubConnectionContextProvider>
                 </ShowChatContextProvider>
             </CookiesProvider>
             <Footer/>

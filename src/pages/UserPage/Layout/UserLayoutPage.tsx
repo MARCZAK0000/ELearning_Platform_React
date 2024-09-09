@@ -1,5 +1,6 @@
-import UserContentComponent from "../../components/UserPagesComponents/UserContentComponent"
-import UserMenuComponent from "../../components/UserPagesComponents/UserMenu"
+import UserContentComponent from "./UserContentComponent"
+import UserMenuComponent from "./UserMenu"
+
 
 const UserLayoutPage= () => {
     return(<>

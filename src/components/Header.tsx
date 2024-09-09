@@ -45,14 +45,22 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                                 <span>Welcome </span>
                                 <Link to="#">{user.email}</Link>
                             </div>
-                            <button onClick={handleShowChat} className="inline relative ps-7">
-                                <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{120}</div>
-                                <FontAwesomeIcon icon = {faEnvelope} size="xl"/>
-                            </button>
-                            <button onClick={handleShowNotifications} className="inline relative ps-7">
-                                <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{120}</div>
-                                <FontAwesomeIcon icon = {faBell} size="xl"/>
-                            </button>
+                            <div className="inline ps-7">
+                                <button onClick={handleShowChat} className="relative">
+                                    <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{120}</div>
+                                    <div className={showChat?"text-orange-600 duration-100":"text-white duration-100"}>
+                                        <FontAwesomeIcon icon = {faEnvelope} size="xl"/>
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="inline ps-7">
+                                <button onClick={handleShowNotifications} className="relative">
+                                    <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{120}</div>
+                                    <div className={showNotifications?"text-blue-600 duration-100":"text-white duration-100"}>
+                                        <FontAwesomeIcon icon = {faBell} size="xl"/>
+                                    </div>
+                                </button>
+                            </div>
                             <Link to="#" className="inline ps-7">
                                 <FontAwesomeIcon className="text-white hover:text-fuchsia-200 duration-1000" size="xl" icon={faCircleXmark}/>
                             </Link>

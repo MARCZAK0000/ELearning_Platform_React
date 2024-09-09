@@ -1,5 +1,7 @@
-import { useNotifications } from "../../context/useNotificationContext"
-import { useShowChat } from "../../context/useShowChatContext"
+import ChatModal from "../../../components/Chat/ChatModal"
+import NotificationModal from "../../../components/Notifications/NotificationModal"
+import { useNotifications } from "../../../context/useNotificationContext"
+import { useShowChat } from "../../../context/useShowChatContext"
 
 const UserContentComponent = ()=>{
     const {showNotifications, notifications}= useNotifications()
@@ -7,15 +9,11 @@ const UserContentComponent = ()=>{
     return(<>
         <div className="h-full col-span-10 relative">
             {showNotifications &&
-            <div className="absolute h-4/5 left-[80%] w-1/5 bg-red-500">
-                Notifications 
-            </div>
+                <NotificationModal/>
             }
 
             { showChat &&
-            <div className="absolute h-full left-[55%] w-1/4 bg-green-500">
-                Chat 
-            </div>
+                <ChatModal/>
             }
             <div className="h-full box-border p-3">Content</div>
         </div>

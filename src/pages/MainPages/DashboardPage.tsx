@@ -1,22 +1,17 @@
 import { useEffect } from "react"
-import { useContextOutlet } from "../RootPages/Layout"
-import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr"
-import UserLayoutPage from "../UserPage/UserLayoutPage"
+import UserLayoutPage from "../UserPage/Layout/UserLayoutPage"
+import { useNotificationConnection } from "../../context/useHubNotificationContext"
 
 const DashboardPage = ()=>{
-    const {cookies} = useContextOutlet()
+    const {notificationConnection} = useNotificationConnection()
 
     useEffect(()=>{
-        var notifications = new HubConnectionBuilder()
-            .withUrl("https:/localhost:7213/hub/notifications")
-            .configureLogging(LogLevel.Information)
-            .build()
-        notifications.on("ReciveMessage", (value)=>{
+        notificationConnection.on("ReciveMessage", (value)=>{
             console.log(value)
         })
 
         const helloWorld = ()=>{
-            notifications.send("HelloWorld")
+            notificationConnection.send("HelloWorld")
         }
         const fullfill = ()=>{
             helloWorld()
@@ -25,8 +20,9 @@ const DashboardPage = ()=>{
         const reject = ()=>{
             console.log("we fcekd up")
         }
-        notifications.start().then(fullfill, reject)
-    }, [])
+        notificationConnection.start().then(fullfill, reject)
+
+    }, [notificationConnection])
     return(<>
         <UserLayoutPage></UserLayoutPage>
     </>)
