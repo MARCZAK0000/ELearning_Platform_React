@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom"
 import ChatModal from "../../../components/Chat/ChatModal"
 import NotificationModal from "../../../components/Notifications/NotificationModal"
 import { useNotifications } from "../../../context/useNotificationContext"
@@ -15,7 +16,9 @@ const UserContentComponent = ()=>{
             { showChat &&
                 <ChatModal/>
             }
-            <div className="h-full box-border p-3">Content</div>
+            <div className="h-full box-border p-3">
+                <Outlet/>
+            </div>
         </div>
     </>)
 }

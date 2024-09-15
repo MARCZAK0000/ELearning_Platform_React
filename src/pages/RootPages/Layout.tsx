@@ -2,25 +2,22 @@ import { Outlet, useOutletContext } from "react-router-dom"
 import Footer from "../../components/Footer"
 import Header from "../../components/Header"
 import { CookiesProvider, useCookies } from "react-cookie"
-import { TokenType } from '../../utilis/TokenTypes';
-import { useEffect } from "react";
 import { ShowChatContextProvider } from "../../context/useShowChatContext";
 import { NotificationHubConnectionContextProvider } from "../../context/useHubNotificationContext";
+import { CookiesUserInformations, OutletContextType, TokenType } from "../../utilis/InputTypes";
 
-type test = {
-    cookies: {
-        user?: TokenType
-    }
-    handleCookie: (user:TokenType)=>void
-}
+
 const Layout = ()=>{
     const [cookies, setCookie] = useCookies(['user'])
+    const [userCookies, setUserCookie] = useCookies(['informations'])
+
+    const handleUserCookie = (info: CookiesUserInformations)=>{
+        setUserCookie('informations', info, {path:"/"})
+    }
     const handleCookie = (user:TokenType)=>{
         setCookie("user", user, {path: "/"})
     }
-    useEffect(()=>{
-        console.log(cookies.user?.token)
-    }, [cookies])
+
     return(
     <>
         <div className='h-svh'>
@@ -29,7 +26,7 @@ const Layout = ()=>{
                 <ShowChatContextProvider>
                     <NotificationHubConnectionContextProvider>
                         <Header user={cookies.user}/>
-                        <Outlet context={{cookies, handleCookie} satisfies test}/>
+                        <Outlet context={{cookies, handleCookie, userCookies, handleUserCookie} satisfies OutletContextType}/>
                     </NotificationHubConnectionContextProvider>
                 </ShowChatContextProvider>
             </CookiesProvider>
@@ -40,6 +37,7 @@ const Layout = ()=>{
     )
 }
 export function useContextOutlet(){
-    return useOutletContext<test>()
+    return useOutletContext<OutletContextType>()
 }
+
 export default Layout

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 import { useNotifications } from "../context/useNotificationContext"
-import { TokenType } from "../utilis/TokenTypes"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCircleXmark, faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { useShowChat } from "../context/useShowChatContext"
+import { TokenType } from "../utilis/InputTypes"
 
 const Header = ({user}: {user: TokenType|undefined})=>{
     const {setShowNotifications, showNotifications, notifications} = useNotifications()
@@ -17,7 +17,6 @@ const Header = ({user}: {user: TokenType|undefined})=>{
 
     const handleShowNotifications = ()=>{
         setShowNotifications(prev=>!prev)        
-        
         
     }
     return(
@@ -43,7 +42,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                         <div className="pr-10">
                             <div className="inline text-xl">
                                 <span>Welcome </span>
-                                <Link to="#">{user.email}</Link>
+                                <Link to="#">{user.addressEmail}</Link>
                             </div>
                             <div className="inline ps-7">
                                 <button onClick={handleShowChat} className="relative">

@@ -17,6 +17,7 @@ const DashboardPage = ()=>{
             helloWorld()
         }
         const reject = ()=>{
+            
         }
         notificationConnection.start().then(fullfill, reject)
 

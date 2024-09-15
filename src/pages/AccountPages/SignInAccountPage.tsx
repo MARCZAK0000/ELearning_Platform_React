@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 import ErrorComponent from "../../components/ErrorComponent";
 import { useContextOutlet } from "../RootPages/Layout";
 
+
+
+
+
 const SignInAccountPage = ()=>{
     const {state, post} =  useAxios<TokenResponseType>()
     const [contrast, setContrast] = useState<boolean>(false)
@@ -16,7 +20,7 @@ const SignInAccountPage = ()=>{
         emailAddress: "",
         password: ""
     })
-    const {handleCookie, cookies} = useContextOutlet()
+    const {handleCookie} = useContextOutlet()
 
     
     const navigate = useNavigate()
