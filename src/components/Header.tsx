@@ -11,13 +11,13 @@ const Header = ({user}: {user: TokenType|undefined})=>{
 
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
-        console.log(showChat);
+        
         
     }
 
     const handleShowNotifications = ()=>{
         setShowNotifications(prev=>!prev)        
-        console.log(showNotifications);
+        
         
     }
     return(

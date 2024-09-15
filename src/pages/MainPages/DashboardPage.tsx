@@ -15,10 +15,8 @@ const DashboardPage = ()=>{
         }
         const fullfill = ()=>{
             helloWorld()
-            console.log("we did it")
         }
         const reject = ()=>{
-            console.log("we fcekd up")
         }
         notificationConnection.start().then(fullfill, reject)
 
