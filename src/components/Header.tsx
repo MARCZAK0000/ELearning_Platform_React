@@ -52,7 +52,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                             </div>
                             <div className="inline ps-7">
                                 <button onClick={handleShowNotifications} className="relative">
-                                    <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{notifications?.items.length}</div>
+                                    <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{notifications?.totalCount}</div>
                                     <div className={showNotifications?"text-blue-600 duration-100":"text-white duration-100"}>
                                         <FontAwesomeIcon icon = {faBell} size="xl"/>
                                     </div>

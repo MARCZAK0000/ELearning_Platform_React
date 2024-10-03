@@ -61,6 +61,13 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
   }
+    .scrollbar-thin{
+        scrollbar-width: thin;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar{
+        scrollbar-width: thin;
+    }
 }
 
 .active-link{

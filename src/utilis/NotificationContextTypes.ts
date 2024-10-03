@@ -1,5 +1,6 @@
 import React from "react";
 export type NotificationItemType = {
+  notificationID: string;
   title: string;
   description: string;
   sender: {

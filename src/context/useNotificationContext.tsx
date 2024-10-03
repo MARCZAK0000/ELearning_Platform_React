@@ -12,7 +12,7 @@ const useNotifications = ()=>{
 }
 
 const NotificationsContextProvider = ({children}: {children: React.ReactNode})=>{
-    const [notifications, setNotifications] = useState<NotificationItemsType[]|null>(null)
+    const [notifications, setNotifications] = useState<NotificationItemsType|null>(null)
     const [showNotifications, setShowNotifications] = useState<boolean>(false)
     return(
     <>  
