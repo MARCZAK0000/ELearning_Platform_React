@@ -22,9 +22,8 @@ const SignInAccountPage = ()=>{
     })
     const {handleCookie} = useContextOutlet()
 
-    
+   
     const navigate = useNavigate()
-
     useEffect(()=>{
         setErrorCode(state.errorCode)
     }, [state.errorCode])
@@ -37,11 +36,12 @@ const SignInAccountPage = ()=>{
     }
 
     const SignIn = async () => {
-        const result = await post(login, {body: JSON.stringify(signInInputs)}, {headers: {"Content-Type": "application/json"}})
+        const result = await post(login, {body: JSON.stringify(signInInputs)}, { withCredentials: true, headers: {"Content-Type": "application/json"}})
         if(result.status===200 || result.status === 201){
-            handleCookie(result.data)
+            handleCookie({isLogin: true})
             navigate("/")
         }
+
     }
 
     const handleClick = async ()=>{

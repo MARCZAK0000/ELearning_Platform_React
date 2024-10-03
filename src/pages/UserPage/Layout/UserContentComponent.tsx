@@ -3,10 +3,13 @@ import ChatModal from "../../../components/Chat/ChatModal"
 import NotificationModal from "../../../components/Notifications/NotificationModal"
 import { useNotifications } from "../../../context/useNotificationContext"
 import { useShowChat } from "../../../context/useShowChatContext"
+import { useContextOutlet } from "../../RootPages/Layout"
+import { OutletContextType } from "../../../utilis/InputTypes"
 
 const UserContentComponent = ()=>{
     const {showNotifications, notifications}= useNotifications()
     const {showChat} = useShowChat()
+    const dealCookies = useContextOutlet()
     return(<>
         <div className="h-full col-span-10 relative">
             {showNotifications &&
@@ -17,7 +20,7 @@ const UserContentComponent = ()=>{
                 <ChatModal/>
             }
             <div className="h-full box-border p-3">
-                <Outlet/>
+                <Outlet context={dealCookies satisfies OutletContextType}/>
             </div>
         </div>
     </>)

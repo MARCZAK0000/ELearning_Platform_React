@@ -11,8 +11,6 @@ const Header = ({user}: {user: TokenType|undefined})=>{
 
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
-        
-        
     }
 
     const handleShowNotifications = ()=>{
@@ -42,7 +40,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                         <div className="pr-10">
                             <div className="inline text-xl">
                                 <span>Welcome </span>
-                                <Link to="#">{user.addressEmail}</Link>
+                                <Link to="#">{100}</Link>
                             </div>
                             <div className="inline ps-7">
                                 <button onClick={handleShowChat} className="relative">
@@ -54,7 +52,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                             </div>
                             <div className="inline ps-7">
                                 <button onClick={handleShowNotifications} className="relative">
-                                    <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{120}</div>
+                                    <div className="absolute w-6 h-6 left-[90%] -top-5 bg-red-600 rounded-full flex justify-center items-center">{notifications?.items.length}</div>
                                     <div className={showNotifications?"text-blue-600 duration-100":"text-white duration-100"}>
                                         <FontAwesomeIcon icon = {faBell} size="xl"/>
                                     </div>

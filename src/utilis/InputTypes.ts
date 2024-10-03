@@ -18,17 +18,11 @@ export type SignInTypes = {
 };
 
 export type TokenResponseType = {
-  addressEmail: string;
-  token: string;
-  refreshToken: string;
-  signInDate: Date;
-  tokenExpiredDate: Date;
+  isLogin: boolean;
 };
 
 export type TokenType = {
-  addressEmail: string;
-  token: string;
-  refreshToken: string;
+  isLogin: boolean;
 };
 
 export type CookiesUserInformations = {

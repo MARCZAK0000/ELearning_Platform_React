@@ -1,9 +1,27 @@
-import { useState } from "react"
-
+import { CookiesUserInformations } from '../../../../utilis/InputTypes';
+import { useAxios } from "../../../../hooks/useAxios";
+import { useState } from "react";
+import { UserInformationsLink } from "../../../../utilis/Links";
 const UserWelcomePage = ()=>{
+    const [user, setUser] = useState<CookiesUserInformations|null>(null)
+    const {get, post} = useAxios<CookiesUserInformations>()
+    const GetUser = async () =>{
     
-    return(<>
+        const response = await post(UserInformationsLink, {body:JSON.stringify({
+            name: "TEST1",
+            yearOfBegining: 2024,
+            yearOfEnding: 2028
+        })}, {headers: {'Content-Type': 'application/json'}})
+        console.log(response.data);
+        
+    }
+
+    
+    return(
+    <>
         <div>HELLO WELCOME PAGE</div>
+        <button onClick={GetUser}>Click ME </button>
+        <div></div>
     </>)
 }
 

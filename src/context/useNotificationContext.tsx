@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NotificationContextType, NotificationType } from "../utilis/NotificationContextTypes";
+import { NotificationContextType, NotificationItemsType } from "../utilis/NotificationContextTypes";
 
 const NotificationContext = React.createContext<NotificationContextType|null>(null)
 
@@ -12,7 +12,7 @@ const useNotifications = ()=>{
 }
 
 const NotificationsContextProvider = ({children}: {children: React.ReactNode})=>{
-    const [notifications, setNotifications] = useState<NotificationType[]|null>(null)
+    const [notifications, setNotifications] = useState<NotificationItemsType[]|null>(null)
     const [showNotifications, setShowNotifications] = useState<boolean>(false)
     return(
     <>  
