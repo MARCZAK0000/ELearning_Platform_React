@@ -10,3 +10,5 @@ export const NotificationsGet = `${baseUrl}/api/notifications`;
 
 export const ProfileImgUrlBaseLink =
   "http://127.0.0.1:10000/devstoreaccount1/platformdb-userimage";
+
+export const NotificationChangeToRead = `${baseUrl}/api/notifications`;

@@ -15,7 +15,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
 
     const handleShowNotifications = ()=>{
         setShowNotifications(prev=>!prev)        
-        
+        console.log(notifications)
     }
     return(
     <>
