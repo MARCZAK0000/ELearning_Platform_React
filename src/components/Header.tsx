@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCircleXmark, faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { useShowChat } from "../context/useShowChatContext"
 import { TokenType } from "../utilis/InputTypes"
+import { useUserSingInResponse } from "../context/useSignInLoginResponse"
 
 const Header = ({user}: {user: TokenType|undefined})=>{
     const {setShowNotifications, showNotifications, notifications} = useNotifications()
     const {showChat,setShowChat} = useShowChat()
-
+    const response = useUserSingInResponse()
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
     }
@@ -28,7 +29,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                 </div>
 
                 {
-                    user===undefined?
+                    !user?.isLogin?
                     <div className="col-span-1 box-border p-5 text-end">
                         <div className="pr-10">
                             <Link to="/register"className=" inline text-xl font-light font-export duration-1000 hover:text-fuchsia-200">Register</Link>
@@ -40,7 +41,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                         <div className="pr-10">
                             <div className="inline text-xl">
                                 <span>Welcome </span>
-                                <Link to="#">{100}</Link>
+                                <Link to="#">{response?.signInResponse?.email}</Link>
                             </div>
                             <div className="inline ps-7">
                                 <button onClick={handleShowChat} className="relative">

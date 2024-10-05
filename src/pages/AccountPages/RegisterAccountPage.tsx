@@ -4,7 +4,6 @@ import { RegisterInputType } from "../../utilis/InputTypes";
 import { useAxios } from "../../hooks/useAxios";
 import RegisterAccountMain from "./RegisterAccountPageComponents/RegisterAccountPageMain";
 import RegisterAccountSuccess from "./RegisterAccountPageComponents/RegisterAccountSuccess";
-import { toast, ToastContainer } from "react-toastify";
 import { RegisterLink as Register } from "../../utilis/Links";
 const RegisterAccountPage = ()=>{
 
@@ -44,11 +43,6 @@ const RegisterAccountPage = ()=>{
                 "Content-Type":"Application/Json",
             }
         })
-        if(response.data){
-
-            console.log("Done");
-            toast.success("Well done")
-        }
     },[registerInput])
 
     return (<>

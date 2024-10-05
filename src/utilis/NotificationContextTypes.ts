@@ -1,4 +1,3 @@
-import { Guid } from "guid-typescript";
 import React from "react";
 export type NotificationItemType = {
   notificationID: string;

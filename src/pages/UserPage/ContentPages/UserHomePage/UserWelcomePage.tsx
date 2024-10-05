@@ -1,9 +1,8 @@
 import { CookiesUserInformations } from '../../../../utilis/InputTypes';
 import { useAxios } from "../../../../hooks/useAxios";
-import { useState } from "react";
 import { UserInformationsLink } from "../../../../utilis/Links";
 const UserWelcomePage = ()=>{
-    const [user, setUser] = useState<CookiesUserInformations|null>(null)
+    
     const {get, post} = useAxios<CookiesUserInformations>()
     const GetUser = async () =>{
     

@@ -4,16 +4,14 @@ import Header from "../../components/Header"
 import { CookiesProvider, useCookies } from "react-cookie"
 import { ShowChatContextProvider } from "../../context/useShowChatContext";
 import { NotificationHubConnectionContextProvider } from "../../context/useHubNotificationContext";
-import { CookiesUserInformations, OutletContextType, TokenType } from "../../utilis/InputTypes";
+import { OutletContextType, TokenType } from "../../utilis/InputTypes";
+import { UserSignInResponseProvider } from "../../context/useSignInLoginResponse";
 
 
 const Layout = ()=>{
     const [cookies, setCookie] = useCookies(['user'])
-    const [userCookies, setUserCookie] = useCookies(['informations'])
+    
 
-    const handleUserCookie = (info: CookiesUserInformations)=>{
-        setUserCookie('informations', info, {path:"/"})
-    }
     const handleCookie = (user:TokenType)=>{
         setCookie("user", user, {path: "/"})
     }
@@ -24,10 +22,12 @@ const Layout = ()=>{
         <div className='grid grid-rows-12 h-full'>
             <CookiesProvider>
                 <ShowChatContextProvider>
-                    <NotificationHubConnectionContextProvider>
-                        <Header user={cookies.user}/>
-                        <Outlet context={{cookies, handleCookie, userCookies, handleUserCookie} satisfies OutletContextType}/>
-                    </NotificationHubConnectionContextProvider>
+                    <UserSignInResponseProvider>
+                        <NotificationHubConnectionContextProvider>
+                            <Header user={cookies.user}/>
+                            <Outlet context={{cookies, handleCookie} satisfies OutletContextType}/>
+                        </NotificationHubConnectionContextProvider>
+                    </UserSignInResponseProvider>
                 </ShowChatContextProvider>
             </CookiesProvider>
             <Footer/>

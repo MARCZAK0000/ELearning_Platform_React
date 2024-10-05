@@ -17,6 +17,18 @@ export type SignInTypes = {
   password: string;
 };
 
+export type SignInResponseType = {
+  success: boolean;
+  role: string;
+  email: string;
+};
+
+export type SignInResponseContextType = {
+  signInResponse: SignInResponseType | null;
+  setSignInResponse: React.Dispatch<
+    React.SetStateAction<SignInResponseType | null>
+  >;
+};
 export type TokenResponseType = {
   isLogin: boolean;
 };
@@ -48,8 +60,4 @@ export type OutletContextType = {
     user?: TokenType;
   };
   handleCookie: (user: TokenType) => void;
-  userCookies: {
-    informations?: CookiesUserInformations;
-  };
-  handleUserCookie: (info: CookiesUserInformations) => void;
 };

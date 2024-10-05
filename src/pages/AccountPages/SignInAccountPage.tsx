@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react"
 import ContrastButton from "../../components/AccountComponents/ContrastButton"
-import { SignInTypes, TokenResponseType } from "../../utilis/InputTypes"
+import { SignInResponseType, SignInTypes, TokenResponseType } from "../../utilis/InputTypes"
 import SignInInputsMain from "./SignInPageComponents/SignInInputs"
 import { useAxios } from '../../hooks/useAxios';
 import { SignInLink as login }  from "../../utilis/Links";
 import { useNavigate } from "react-router-dom";
 import ErrorComponent from "../../components/ErrorComponent";
 import { useContextOutlet } from "../RootPages/Layout";
+import { useUserSingInResponse } from "../../context/useSignInLoginResponse";
 
 
 
 
 
 const SignInAccountPage = ()=>{
-    const {state, post} =  useAxios<TokenResponseType>()
+    const {state, post} =  useAxios<SignInResponseType>()
+    const response = useUserSingInResponse()
     const [contrast, setContrast] = useState<boolean>(false)
     const [errorCode, setErrorCode] = useState<undefined| number>(undefined)
     const [signInInputs, setSignInInputs] = useState<SignInTypes>({
@@ -39,6 +41,7 @@ const SignInAccountPage = ()=>{
         const result = await post(login, {body: JSON.stringify(signInInputs)}, { withCredentials: true, headers: {"Content-Type": "application/json"}})
         if(result.status===200 || result.status === 201){
             handleCookie({isLogin: true})
+            response?.setSignInResponse(result.data)
             navigate("/")
         }
 

@@ -16,8 +16,6 @@ const NotificationModal = ()=>{
             if(notifications?.totalCount !== undefined && typeof notifications?.totalCount === "number"){
                 setNotifications(prev => {
                     if (!prev) {
-                        
-                        
                         return null; 
                     }
                     return {
