@@ -5,7 +5,6 @@ import { CookiesProvider } from "react-cookie"
 import { ShowChatContextProvider } from "../../context/useShowChatContext";
 import { NotificationHubConnectionContextProvider } from "../../context/useHubNotificationContext";
 import { UserSignInResponseProvider } from "../../context/useSignInLoginResponse";
-import { IsSignInContextType } from '../../utilis/InputTypes';
 import { IsSignInProvider } from "../../context/useIsSignIn";
 
 

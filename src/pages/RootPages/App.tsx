@@ -6,9 +6,9 @@ function App() {
   const createRoute = createBrowserRouter(PublicRoutes)
   return (
     <>
-      <NotificationsContextProvider>
-        <RouterProvider router={createRoute}/>
-      </NotificationsContextProvider>
+        <NotificationsContextProvider>
+          <RouterProvider router={createRoute}/>
+        </NotificationsContextProvider>
     </>
   )
 }

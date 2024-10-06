@@ -15,7 +15,7 @@ const MainPage= ()=> {
         else{
             setIsSignIn(false)
         }
-    }, [])
+    }, [setIsSignIn])
     return(
         <>
             { isSignIn===true? <NotificationDashboardPage/> : <HomePage/>}
