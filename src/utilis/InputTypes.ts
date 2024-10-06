@@ -1,3 +1,5 @@
+import React from "react";
+
 export type RegisterInputType = {
   addressEmail: string;
   password: string;
@@ -22,42 +24,13 @@ export type SignInResponseType = {
   role: string;
   email: string;
 };
-
+export type IsSignInContextType = {
+  isSignIn: boolean;
+  setIsSignIn: React.Dispatch<React.SetStateAction<boolean>>;
+};
 export type SignInResponseContextType = {
   signInResponse: SignInResponseType | null;
   setSignInResponse: React.Dispatch<
     React.SetStateAction<SignInResponseType | null>
   >;
-};
-export type TokenResponseType = {
-  isLogin: boolean;
-};
-
-export type TokenType = {
-  isLogin: boolean;
-};
-
-export type CookiesUserInformations = {
-  accountID: string;
-  firstName: string;
-  secondName: string;
-  surname: string;
-  emailAddress: string;
-  phoneNumber: string;
-  address: CookiesUserAddress;
-  className: any;
-};
-
-export type CookiesUserAddress = {
-  city: string;
-  country: string;
-  postalCode: string;
-  streetName: string;
-};
-
-export type OutletContextType = {
-  cookies: {
-    user?: TokenType;
-  };
-  handleCookie: (user: TokenType) => void;
 };

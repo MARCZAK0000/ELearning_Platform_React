@@ -1,13 +1,24 @@
 
-import { useContextOutlet } from "../RootPages/Layout"
-import NotificationDashboardPage from "./DashboardPage"
+import { GetLocalStorage } from "../../utilis/localStorageSignIn"
+import NotificationDashboardPage from "./NotificationsDashboardPage"
 import HomePage from "./HomePage"
+import { useEffect } from "react"
+import { useIsSignIn } from "../../context/useIsSignIn"
 
 const MainPage= ()=> { 
-    const {cookies} = useContextOutlet()
+    const {isSignIn, setIsSignIn} = useIsSignIn()
+    useEffect(()=>{
+        const result = GetLocalStorage();
+        if(result){
+            setIsSignIn(true)
+        }
+        else{
+            setIsSignIn(false)
+        }
+    }, [])
     return(
         <>
-            {cookies.user?.isLogin? <NotificationDashboardPage/> : <HomePage/>}
+            { isSignIn===true? <NotificationDashboardPage/> : <HomePage/>}
         </>
     )
 }

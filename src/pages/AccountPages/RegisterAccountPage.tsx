@@ -5,11 +5,12 @@ import { useAxios } from "../../hooks/useAxios";
 import RegisterAccountMain from "./RegisterAccountPageComponents/RegisterAccountPageMain";
 import RegisterAccountSuccess from "./RegisterAccountPageComponents/RegisterAccountSuccess";
 import { RegisterLink as Register } from "../../utilis/Links";
+import { useNavigate } from "react-router-dom";
 const RegisterAccountPage = ()=>{
 
     const [contrast, setContrast] = useState<boolean>(false)
     const {post, state} = useAxios<boolean>()
-
+    const navigate = useNavigate()
     const [registerInput, setRegisterInput]=useState<RegisterInputType>({
         addressEmail: "",
         password: "",
@@ -43,6 +44,9 @@ const RegisterAccountPage = ()=>{
                 "Content-Type":"Application/Json",
             }
         })
+        if(response.data){
+            navigate("/")
+        }
     },[registerInput])
 
     return (<>

@@ -3,17 +3,17 @@ import { useNotifications } from "../context/useNotificationContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCircleXmark, faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { useShowChat } from "../context/useShowChatContext"
-import { TokenType } from "../utilis/InputTypes"
 import { useUserSingInResponse } from "../context/useSignInLoginResponse"
+import { GetLocalStorage } from "../utilis/localStorageSignIn"
 
-const Header = ({user}: {user: TokenType|undefined})=>{
+const Header = ()=>{
     const {setShowNotifications, showNotifications, notifications} = useNotifications()
     const {showChat,setShowChat} = useShowChat()
     const response = useUserSingInResponse()
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
     }
-
+    const result = GetLocalStorage();
     const handleShowNotifications = ()=>{
         setShowNotifications(prev=>!prev)        
         console.log(notifications)
@@ -29,7 +29,7 @@ const Header = ({user}: {user: TokenType|undefined})=>{
                 </div>
 
                 {
-                    !user?.isLogin?
+                    result===null?
                     <div className="col-span-1 box-border p-5 text-end">
                         <div className="pr-10">
                             <Link to="/register"className=" inline text-xl font-light font-export duration-1000 hover:text-fuchsia-200">Register</Link>

@@ -1,20 +1,15 @@
-import { Outlet, useOutletContext } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import Footer from "../../components/Footer"
 import Header from "../../components/Header"
-import { CookiesProvider, useCookies } from "react-cookie"
+import { CookiesProvider } from "react-cookie"
 import { ShowChatContextProvider } from "../../context/useShowChatContext";
 import { NotificationHubConnectionContextProvider } from "../../context/useHubNotificationContext";
-import { OutletContextType, TokenType } from "../../utilis/InputTypes";
 import { UserSignInResponseProvider } from "../../context/useSignInLoginResponse";
+import { IsSignInContextType } from '../../utilis/InputTypes';
+import { IsSignInProvider } from "../../context/useIsSignIn";
 
 
 const Layout = ()=>{
-    const [cookies, setCookie] = useCookies(['user'])
-    
-
-    const handleCookie = (user:TokenType)=>{
-        setCookie("user", user, {path: "/"})
-    }
 
     return(
     <>
@@ -23,10 +18,12 @@ const Layout = ()=>{
             <CookiesProvider>
                 <ShowChatContextProvider>
                     <UserSignInResponseProvider>
-                        <NotificationHubConnectionContextProvider>
-                            <Header user={cookies.user}/>
-                            <Outlet context={{cookies, handleCookie} satisfies OutletContextType}/>
-                        </NotificationHubConnectionContextProvider>
+                        <IsSignInProvider>
+                            <NotificationHubConnectionContextProvider>
+                                <Header/>
+                                <Outlet/>
+                            </NotificationHubConnectionContextProvider>
+                        </IsSignInProvider>
                     </UserSignInResponseProvider>
                 </ShowChatContextProvider>
             </CookiesProvider>
@@ -35,9 +32,6 @@ const Layout = ()=>{
         </div>
     </>
     )
-}
-export function useContextOutlet(){
-    return useOutletContext<OutletContextType>()
 }
 
 export default Layout

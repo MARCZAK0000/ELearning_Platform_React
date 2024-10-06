@@ -1,9 +1,8 @@
-import { CookiesUserInformations } from '../../../../utilis/InputTypes';
 import { useAxios } from "../../../../hooks/useAxios";
 import { UserInformationsLink } from "../../../../utilis/Links";
 const UserWelcomePage = ()=>{
     
-    const {get, post} = useAxios<CookiesUserInformations>()
+    const { post} = useAxios<boolean>()
     const GetUser = async () =>{
     
         const response = await post(UserInformationsLink, {body:JSON.stringify({
