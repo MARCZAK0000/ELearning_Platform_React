@@ -11,6 +11,8 @@ export const GetNotificationsLink = `${baseUrl}/api/notifications`;
 
 export const RefreshTokenLink = `${baseUrl}/api/account/refresh`;
 
+export const GetRoleLink = `${baseUrl}/api/account/role`;
+
 export const ProfileImgUrlBaseLink =
   "http://127.0.0.1:10000/devstoreaccount1/platformdb-userimage";
 

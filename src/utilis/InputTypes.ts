@@ -28,9 +28,34 @@ export type IsSignInContextType = {
   isSignIn: boolean;
   setIsSignIn: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 export type SignInResponseContextType = {
   signInResponse: SignInResponseType | null;
   setSignInResponse: React.Dispatch<
     React.SetStateAction<SignInResponseType | null>
+  >;
+};
+
+export type UserInformationsType = {
+  accountID: string;
+  firstName: string;
+  secondName: string;
+  surname: string;
+  emailAddress: string;
+  phoneNumber: string;
+  roleName: string;
+  address: UserAddress;
+  className: any;
+};
+export type UserAddress = {
+  city: string;
+  country: string;
+  postalCode: string;
+  streetName: string;
+};
+export type UserInformationsContextType = {
+  userInformations: UserInformationsType | null;
+  setUserInformations: React.Dispatch<
+    React.SetStateAction<UserInformationsType | null>
   >;
 };

@@ -1,9 +1,8 @@
-
 import { GetLocalStorage } from "../../utilis/localStorageSignIn"
-import NotificationDashboardPage from "./NotificationsDashboardPage"
 import HomePage from "./HomePage"
 import { useEffect } from "react"
 import { useIsSignIn } from "../../context/useIsSignIn"
+import DashboardPage from "./DashboardPage"
 
 const MainPage= ()=> { 
     const {isSignIn, setIsSignIn} = useIsSignIn()
@@ -18,7 +17,7 @@ const MainPage= ()=> {
     }, [setIsSignIn])
     return(
         <>
-            { isSignIn===true? <NotificationDashboardPage/> : <HomePage/>}
+            { isSignIn===true? <DashboardPage/> : <HomePage/>}
         </>
     )
 }

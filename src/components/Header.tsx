@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCircleXmark, faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { useShowChat } from "../context/useShowChatContext"
 import { useUserSingInResponse } from "../context/useSignInLoginResponse"
-import { GetLocalStorage } from "../utilis/localStorageSignIn"
+import { useIsSignIn } from "../context/useIsSignIn"
+import { useUserInformations } from "../context/useUserInformations"
+import { UserInformationsType } from '../utilis/InputTypes';
 
 const Header = ()=>{
     const {setShowNotifications, showNotifications, notifications} = useNotifications()
@@ -13,7 +15,8 @@ const Header = ()=>{
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
     }
-    const result = GetLocalStorage();
+    const {isSignIn} = useIsSignIn()
+    const {userInformations} = useUserInformations()
     const handleShowNotifications = ()=>{
         setShowNotifications(prev=>!prev)        
         console.log(notifications)
@@ -29,7 +32,7 @@ const Header = ()=>{
                 </div>
 
                 {
-                    result===null?
+                    !isSignIn?
                     <div className="col-span-1 box-border p-5 text-end">
                         <div className="pr-10">
                             <Link to="/register"className=" inline text-xl font-light font-export duration-1000 hover:text-fuchsia-200">Register</Link>
@@ -41,7 +44,7 @@ const Header = ()=>{
                         <div className="pr-10">
                             <div className="inline text-xl">
                                 <span>Welcome </span>
-                                <Link to="#">{response?.signInResponse?.email}</Link>
+                                <Link to="#">{userInformations?.emailAddress}</Link>
                             </div>
                             <div className="inline ps-7">
                                 <button onClick={handleShowChat} className="relative">

@@ -8,7 +8,7 @@ const UserSignInResponseContext = React.createContext<SignInResponseContextType|
 export const useUserSingInResponse = ()=>{
     const userSignInResponseContext = useContext(UserSignInResponseContext)
 
-    if(useUserSingInResponse==null){
+    if(useUserSingInResponse===null){
         throw new Error("Something went wrong with sign in response")
     }
     return userSignInResponseContext

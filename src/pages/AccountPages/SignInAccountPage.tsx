@@ -40,7 +40,7 @@ const SignInAccountPage = ()=>{
         if(result.status===200 || result.status === 201){
             response?.setSignInResponse(result.data)
             InsertIntoLocalStorage("true")
-            navigate("/")
+            navigate(`/${result.data.role}`)
         }
 
     }
