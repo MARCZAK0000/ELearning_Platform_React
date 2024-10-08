@@ -5,7 +5,7 @@ export const SignInLink = `${baseUrl}/api/account/signin`;
 
 export const RegisterLink = `${baseUrl}/api/account/register`;
 
-export const UserInformationsLink = `${baseUrl}/api/school/class/create`;
+export const UserInformationsLink = `${baseUrl}/api/user/me`;
 
 export const GetNotificationsLink = `${baseUrl}/api/notifications`;
 

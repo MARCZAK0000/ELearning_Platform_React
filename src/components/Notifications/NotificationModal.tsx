@@ -28,7 +28,7 @@ const NotificationModal = ()=>{
         return result.data
     }
     return(<>
-        <div className="absolute h-4/5 left-[80%] w-1/5 border rounded-b-lg overflow-auto scrollbar-thin">
+        <div className="absolute h-4/5 left-[80%] bg-white w-1/5 border rounded-b-lg overflow-auto scrollbar-thin">
             <div className="border-b-2 p-2">
                 <div className="text-xl">Notifications</div>
             </div>

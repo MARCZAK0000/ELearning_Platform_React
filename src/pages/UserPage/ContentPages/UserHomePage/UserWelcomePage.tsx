@@ -1,24 +1,10 @@
-import { useAxios } from "../../../../hooks/useAxios";
-import { UserInformationsLink } from "../../../../utilis/Links";
+import WelcomePage from "../../../../components/PageComponents/WelcomePage";
+import { useUserInformations } from "../../../../context/useUserInformations";
 const UserWelcomePage = ()=>{
-    
-    const { post} = useAxios<boolean>()
-    const GetUser = async () =>{
-    
-        const response = await post(UserInformationsLink, {body:JSON.stringify({
-            name: "TEST1",
-            yearOfBegining: 2024,
-            yearOfEnding: 2028
-        })}, {headers: {'Content-Type': 'application/json'}})
-        console.log(response.data);
-    }
-
-    
+    const {userInformations} = useUserInformations()    
     return(
     <>
-        <div>HELLO WELCOME PAGE</div>
-        <button onClick={GetUser}>Click ME </button>
-        <div></div>
+        <WelcomePage />
     </>)
 }
 

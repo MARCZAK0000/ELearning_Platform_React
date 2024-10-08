@@ -9,6 +9,7 @@ import UserLayoutPage from "../pages/UserPage/Layout/UserLayoutPage";
 import RequireAuth from "./RequireAuth";
 import TeacherLayoutPage from "../pages/TeacherPages/Layout/TeacherLayoutPage";
 import TeacherWelcomePage from "../pages/TeacherPages/ContentPages/TeacherWelcomePage";
+import Verification from "../pages/MainPages/Verification";
 
 enum Roles 
 {
@@ -24,8 +25,10 @@ export const PublicRoutes : RouteObject [] = [
             element: <MainPage/>, path:"/", children:[
                 { 
                     element:
-                    <RequireAuth allowedRoles={Roles.admin}>
-                        <UserLayoutPage/>
+                    <RequireAuth allowedRoles={Roles.student}>
+                        <Verification>
+                            <UserLayoutPage/>
+                        </Verification>
                     </RequireAuth >, 
                     path:"/student", 
                     children: [
@@ -35,7 +38,9 @@ export const PublicRoutes : RouteObject [] = [
                 {
                     element:
                     <RequireAuth allowedRoles={Roles.admin}>
-                        <TeacherLayoutPage/>
+                        <Verification>
+                            <TeacherLayoutPage/>
+                        </Verification>
                     </RequireAuth>,
                     path:"/admin",
                     children:[

@@ -16,7 +16,7 @@ const UserContentComponent = ()=>{
             { showChat &&
                 <ChatModal/>
             }
-            <div className="h-full box-border p-3">
+            <div className="h-full box-border">
                 <Outlet/>
             </div>
         </div>

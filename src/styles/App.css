@@ -11,7 +11,15 @@
     margin: 0px;
     padding: 0px;
 }
-
+.welcome {
+    background-image: url(../assets/welcomePage.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 1;
+    margin: 0px;
+    padding: 0px;
+}
 @font-face {
     font-family: "EduFont";
     src: url(../Fonts/FastHand/Fasthand-Regular.ttf);
@@ -34,7 +42,10 @@
     font-family: "NewAmsterdam";
     src: url("../Fonts/New_Amsterdam/NewAmsterdam-Regular.ttf")
 }
-
+@font-face {
+    font-family: "EduGuides";
+    src: url("../Fonts/EduGuides/EduAUVICWANTGuides-VariableFont_wght.ttf");
+}
 .font-title {
     font-family: "NewAmsterdam";
 }
@@ -46,6 +57,9 @@
 }
 .font-indie_flower{
     font-family: "Indie_Flower";
+}
+.font-edu-guides{
+    font-family: "EduGuides";
 }
 .border-e-1{
     border-inline-end-width: 1px;
