@@ -10,6 +10,7 @@ import RequireAuth from "./RequireAuth";
 import TeacherLayoutPage from "../pages/TeacherPages/Layout/TeacherLayoutPage";
 import TeacherWelcomePage from "../pages/TeacherPages/ContentPages/TeacherWelcomePage";
 import Verification from "../pages/MainPages/Verification";
+import { UserRoleProvider } from "../context/useRole";
 
 enum Roles 
 {
@@ -20,16 +21,18 @@ enum Roles
 
 export const PublicRoutes : RouteObject [] = [
     {
-        element: <Layout/>, path:"/", children: [
+        element: 
+            <UserRoleProvider>
+                <Layout/>
+            </UserRoleProvider>, path:"/", children: [
         {
             element: <MainPage/>, path:"/", children:[
                 { 
                     element:
-                    <RequireAuth allowedRoles={Roles.student}>
-                        <Verification>
+                        <RequireAuth allowedRoles={Roles.student}>
                             <UserLayoutPage/>
-                        </Verification>
-                    </RequireAuth >, 
+                        </RequireAuth>
+                         ,
                     path:"/student", 
                     children: [
                     {element: <UserWelcomePage/>, path:"/student"},
@@ -37,11 +40,10 @@ export const PublicRoutes : RouteObject [] = [
                 ]},
                 {
                     element:
-                    <RequireAuth allowedRoles={Roles.admin}>
-                        <Verification>
+                    
+                        <RequireAuth allowedRoles={Roles.admin}>
                             <TeacherLayoutPage/>
-                        </Verification>
-                    </RequireAuth>,
+                        </RequireAuth>,
                     path:"/admin",
                     children:[
                         {element: <TeacherWelcomePage/>, path:"/admin"}

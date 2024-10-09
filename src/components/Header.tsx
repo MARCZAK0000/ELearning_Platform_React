@@ -3,19 +3,17 @@ import { useNotifications } from "../context/useNotificationContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCircleXmark, faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { useShowChat } from "../context/useShowChatContext"
-import { useUserSingInResponse } from "../context/useSignInLoginResponse"
-import { useIsSignIn } from "../context/useIsSignIn"
 import { useUserInformations } from "../context/useUserInformations"
 import { UserInformationsType } from '../utilis/InputTypes';
+import { useUserRole } from "../context/useRole"
 
 const Header = ()=>{
     const {setShowNotifications, showNotifications, notifications} = useNotifications()
     const {showChat,setShowChat} = useShowChat()
-    const response = useUserSingInResponse()
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
     }
-    const {isSignIn} = useIsSignIn()
+    const {role} = useUserRole()
     const {userInformations} = useUserInformations()
     const handleShowNotifications = ()=>{
         setShowNotifications(prev=>!prev)        
@@ -32,7 +30,7 @@ const Header = ()=>{
                 </div>
 
                 {
-                    !isSignIn?
+                    !role.role?
                     <div className="col-span-1 box-border p-5 text-end">
                         <div className="pr-10">
                             <Link to="/register"className=" inline text-xl font-light font-export duration-1000 hover:text-fuchsia-200">Register</Link>

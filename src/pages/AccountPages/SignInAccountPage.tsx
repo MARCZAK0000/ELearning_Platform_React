@@ -7,7 +7,7 @@ import { SignInLink as login }  from "../../utilis/Links";
 import { useNavigate } from "react-router-dom";
 import ErrorComponent from "../../components/ErrorComponent";
 import { useUserSingInResponse } from "../../context/useSignInLoginResponse";
-import { InsertIntoLocalStorage } from "../../utilis/localStorageSignIn";
+import { useUserRole } from "../../context/useRole";
 
 
 
@@ -22,6 +22,7 @@ const SignInAccountPage = ()=>{
         emailAddress: "",
         password: ""
     })
+    const {refreshRole}=useUserRole()
     const navigate = useNavigate()
     useEffect(()=>{
         setErrorCode(state.errorCode)
@@ -39,8 +40,8 @@ const SignInAccountPage = ()=>{
         , { withCredentials: true, headers: {"Content-Type": "application/json", 'Access-Control-Allow-Origin': '*',}})
         if(result.status===200 || result.status === 201){
             response?.setSignInResponse(result.data)
-            InsertIntoLocalStorage("true")
-            navigate(`/${result.data.role}`)
+            await refreshRole()
+            navigate(`/${response?.signInResponse?.role}`)
         }
 
     }

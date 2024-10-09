@@ -3,6 +3,7 @@ import Footer from "../../components/Footer"
 import Header from "../../components/Header"
 import { ShowChatContextProvider } from "../../context/useShowChatContext";
 import { NotificationHubConnectionContextProvider } from "../../context/useHubNotificationContext";
+import { UserRoleProvider } from "../../context/useRole";
 
 
 
@@ -15,7 +16,9 @@ const Layout = ()=>{
                 <ShowChatContextProvider>
                     <NotificationHubConnectionContextProvider>
                         <Header/>
-                        <Outlet/>
+                        <UserRoleProvider>
+                            <Outlet/>
+                        </UserRoleProvider>
                     </NotificationHubConnectionContextProvider>
                 </ShowChatContextProvider>
             <Footer/>
