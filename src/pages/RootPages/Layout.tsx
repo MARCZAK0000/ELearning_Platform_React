@@ -11,7 +11,7 @@ const Layout = ()=>{
 
     return(
     <>
-        <div className='h-svh'>
+        <div className='h-fit md:h-svh'>
         <div className='grid grid-rows-12 h-full'>
                 <ShowChatContextProvider>
                     <NotificationHubConnectionContextProvider>

@@ -30,7 +30,9 @@ export const PublicRoutes : RouteObject [] = [
                 { 
                     element:
                         <RequireAuth allowedRoles={Roles.student}>
-                            <UserLayoutPage/>
+                            <Verification>
+                                <UserLayoutPage/>
+                            </Verification>
                         </RequireAuth>
                          ,
                     path:"/student", 
@@ -42,7 +44,9 @@ export const PublicRoutes : RouteObject [] = [
                     element:
                     
                         <RequireAuth allowedRoles={Roles.admin}>
-                            <TeacherLayoutPage/>
+                            <Verification>
+                                <TeacherLayoutPage/>
+                            </Verification>
                         </RequireAuth>,
                     path:"/admin",
                     children:[

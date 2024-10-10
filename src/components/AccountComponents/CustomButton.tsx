@@ -19,7 +19,7 @@ export const CustomButton = ({text, onClick}: CustomButtonType)=>{
         hover:bg-green-700 
         hover:cursor-pointer
         duration-200">
-            <div className="font-export text-2xl text-center ">{text}</div>
+            <div className="font-export md:text-2xl text-xsm text-center ">{text}</div>
         </button>
     </>
     )

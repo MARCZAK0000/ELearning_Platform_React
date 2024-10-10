@@ -9,10 +9,6 @@ import ErrorComponent from "../../components/ErrorComponent";
 import { useUserSingInResponse } from "../../context/useSignInLoginResponse";
 import { useUserRole } from "../../context/useRole";
 
-
-
-
-
 const SignInAccountPage = ()=>{
     const {state, post} =  useAxios<SignInResponseType>()
     const response = useUserSingInResponse()
@@ -41,7 +37,7 @@ const SignInAccountPage = ()=>{
         if(result.status===200 || result.status === 201){
             response?.setSignInResponse(result.data)
             await refreshRole()
-            navigate(`/${response?.signInResponse?.role}`)
+            navigate(`/${result.data.role}`)
         }
 
     }

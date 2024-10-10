@@ -11,6 +11,14 @@
     margin: 0px;
     padding: 0px;
 }
+
+@media (max-width: 600px) {
+    #root{
+        background: none;
+        margin: 0px;
+        padding: 0px;
+    }
+  }
 .welcome {
     background-image: url(../assets/welcomePage.jpg);
     background-size: cover;
