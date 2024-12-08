@@ -1,23 +1,41 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useNotifications } from "../context/useNotificationContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCircleXmark, faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import { useShowChat } from "../context/useShowChatContext"
 import { useUserInformations } from "../context/useUserInformations"
-import { UserInformationsType } from '../utilis/InputTypes';
 import { useUserRole } from "../context/useRole"
+import { useAxios } from "../hooks/useAxios"
+import { SignOutLink } from "../utilis/Links"
 
 const Header = ()=>{
     const {setShowNotifications, showNotifications, notifications} = useNotifications()
     const {showChat,setShowChat} = useShowChat()
+    const navigate = useNavigate()
+    const {post} = useAxios<boolean>()
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
     }
     const {role} = useUserRole()
-    const {userInformations} = useUserInformations()
+    const {userInformations, setUserInformations} = useUserInformations()
     const handleShowNotifications = ()=>{
         setShowNotifications(prev=>!prev)        
         console.log(notifications)
+    }
+
+    const handleSignOut = async ()=>{
+        const response = await post(SignOutLink, {}, 
+            {
+                withCredentials: true, 
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+        
+        if(response.status === 200 && response.status){
+            setUserInformations(null)
+            navigate('/')
+        }
     }
     return(
     <>
@@ -61,7 +79,7 @@ const Header = ()=>{
                                 </button>
                             </div>
                             <Link to="#" className="inline ps-7">
-                                <FontAwesomeIcon className="text-white hover:text-fuchsia-200 duration-1000 fa-xl" icon={faCircleXmark}/>
+                                <FontAwesomeIcon onClick={handleSignOut} className="text-white hover:text-fuchsia-200 duration-1000 fa-xl" icon={faCircleXmark}/>
                             </Link>
                         </div>
                     </div>
