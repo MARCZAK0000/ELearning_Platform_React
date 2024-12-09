@@ -45,7 +45,10 @@ const SignInAccountPage = ()=>{
     const handleClick = async ()=>{
         await SignIn();
     }
-
+    const handleKeyDown = async (e: React.KeyboardEvent<HTMLDivElement>)=>{
+        if(e.key === 'Enter')
+        await SignIn()
+    }
     return(<>
         <div className="row-span-10 overflow-auto no-scrollbar relative">
             <ContrastButton contrast= {contrast} handleContrast={handleContrast}/>
@@ -57,6 +60,7 @@ const SignInAccountPage = ()=>{
                         handleChange={handleChange}
                         handleClick={handleClick}
                         contrast={contrast}
+                        handleKeyDown={handleKeyDown}
                     />
                 </div>
             </div>

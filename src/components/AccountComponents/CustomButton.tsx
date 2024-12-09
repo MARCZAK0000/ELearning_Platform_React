@@ -1,6 +1,9 @@
+import React from "react"
+
 export type CustomButtonType = {
     text: string
     onClick: (e:React.MouseEvent<HTMLButtonElement>)=> void
+    // onEnter: (e:React.KeyboardEvent<HTMLButtonElement>)=> void
 }
 
 export const CustomButton = ({text, onClick}: CustomButtonType)=>{
@@ -18,7 +21,9 @@ export const CustomButton = ({text, onClick}: CustomButtonType)=>{
         w-1/3
         hover:bg-green-700 
         hover:cursor-pointer
-        duration-200">
+        duration-200"
+        // onKeyDown={onEnter}
+        >
             <div className="font-export md:text-2xl text-xsm text-center ">{text}</div>
         </button>
     </>

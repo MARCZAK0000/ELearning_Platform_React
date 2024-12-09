@@ -4,6 +4,7 @@ import { useUserRole } from "../../context/useRole"
 
 const MainPage= ()=> { 
     const {role} = useUserRole()
+    
     return(
         <>
             {role.isSuccess? <DashboardPage/> : <HomePage/>}

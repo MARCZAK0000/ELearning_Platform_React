@@ -4,17 +4,18 @@ import { SignInInputs } from "../../../utilis/signInInputs"
 
 type SignInInputType = {
     handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void,
-    handleClick: ()=>void
+    handleClick: ()=>void,
+    handleKeyDown: (e:React.KeyboardEvent<HTMLDivElement>)=> void
     contrast: boolean
 }
 
-const SignInInputsMain = ({handleChange, contrast, handleClick}: SignInInputType)=>{
+const SignInInputsMain = ({handleChange, contrast, handleClick, handleKeyDown}: SignInInputType)=>{
     return(
     <>
         <div className="text-center">
             <div className="font-indie_flower text-3xl">Register Account</div>             
         </div>
-        <div className="p-5">
+        <div className="p-5" onKeyDown={handleKeyDown}>
             <div>
                 {
                     SignInInputs.map((item)=>{
@@ -38,7 +39,8 @@ const SignInInputsMain = ({handleChange, contrast, handleClick}: SignInInputType
                     <div className="col-span-2 mt-4">
                         <div className="flex justify-center">
                             <CustomButton text="Submit"
-                            onClick={handleClick}/>
+                            onClick={handleClick}
+                            />
                         </div>
                     </div>
             </div>

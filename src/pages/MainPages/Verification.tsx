@@ -16,6 +16,7 @@ const Verification = ({children}: {children: ReactNode})=>{
     const HandleUserInformations= async()=>{
         const result = await userInfo.get(UserInformationsLink, {withCredentials: true})
         if(result.status===200){
+            console.log(result.data)
             setUserInformations(result.data)
         }
     }
@@ -23,7 +24,7 @@ const Verification = ({children}: {children: ReactNode})=>{
         HandleUserInformations()
     },[])
     const handleRefreshToken = async ()=>{
-        const result = await refreshToken.post(RefreshTokenLink, {}, {withCredentials: true})
+        await refreshToken.post(RefreshTokenLink, {}, {withCredentials: true})
         await refreshRole()
     }
     useEffect(()=>{

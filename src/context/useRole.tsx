@@ -31,6 +31,9 @@ export const UserRoleProvider=({children}: {children: ReactNode})=>{
     })
 
     const GetRole = async ()=>{
+        if(role.isSuccess){
+            return
+        }
         const result = await get(GetRoleLink, {withCredentials: true})
         console.log(result)
         if(result.status===200){

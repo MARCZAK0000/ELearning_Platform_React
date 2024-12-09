@@ -10,8 +10,7 @@ type RequireAuthType = {
 const RequireAuth = ({ allowedRoles, children }: RequireAuthType) => {
     const location = useLocation();
     const { role } = useUserRole();
-    console.log(role)
-    console.log(role.role)
+
     if (role.role === "") {
         return <div>Ładowanie danych...</div>;
     }

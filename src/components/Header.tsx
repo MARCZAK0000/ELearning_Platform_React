@@ -7,6 +7,7 @@ import { useUserInformations } from "../context/useUserInformations"
 import { useUserRole } from "../context/useRole"
 import { useAxios } from "../hooks/useAxios"
 import { SignOutLink } from "../utilis/Links"
+import { useEffect } from "react"
 
 const Header = ()=>{
     const {setShowNotifications, showNotifications, notifications} = useNotifications()
@@ -16,15 +17,17 @@ const Header = ()=>{
     const handleShowChat = ()=>{
         setShowChat(prev=>!prev)
     }
-    const {role} = useUserRole()
+    const {setRole, role} = useUserRole()
+
     const {userInformations, setUserInformations} = useUserInformations()
     const handleShowNotifications = ()=>{
-        setShowNotifications(prev=>!prev)        
+        setShowNotifications(prev=>!prev)      
         console.log(notifications)
     }
 
     const handleSignOut = async ()=>{
-        const response = await post(SignOutLink, {}, 
+        const response = await post(SignOutLink, {
+        }, 
             {
                 withCredentials: true, 
                 headers: {
@@ -34,6 +37,8 @@ const Header = ()=>{
         
         if(response.status === 200 && response.status){
             setUserInformations(null)
+            // console.log(role)
+            // setRole({role: "", isSuccess: false}) 
             navigate('/')
         }
     }
@@ -46,9 +51,8 @@ const Header = ()=>{
                         E-Learning platform
                     </Link>
                 </div>
-
                 {
-                    !role.role?
+                    userInformations?.emailAddress===undefined?
                     <div className="col-span-1 box-border p-5 text-end">
                         <div className="pr-10">
                             <Link to="/register"className=" inline text-xl font-light font-export duration-1000 hover:text-fuchsia-200">Register</Link>
